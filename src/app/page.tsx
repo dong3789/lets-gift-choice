@@ -58,7 +58,7 @@ export default function HomePage() {
             </motion.div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-              2025 설날
+              2026 설날
               <br />
               <span className="text-rose-200">특별한 선물</span>
             </h1>

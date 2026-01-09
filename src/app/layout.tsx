@@ -34,7 +34,7 @@ export default function RootLayout({
               <div className="text-center md:text-right">
                 <p className="text-rose-500 font-medium mb-1">새해 복 많이 받으세요!</p>
                 <p className="text-gray-400 text-sm">
-                  © 2025 설날 선물 쇼핑몰. All rights reserved.
+                  © 2026 설날 선물 쇼핑몰. All rights reserved.
                 </p>
               </div>
             </div>
