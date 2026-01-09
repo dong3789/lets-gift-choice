@@ -10,13 +10,14 @@ interface CategoryFilterProps {
 
 const categoryEmojis: Record<Category | 'all', string> = {
   all: '🎁',
-  '한우/육류': '🥩',
+  '한우': '🥩',
   '수산물': '🐟',
-  '과일': '🍎',
+  '과일': '🍓',
   '건강식품': '🧧',
-  '참기름/들기름': '🫒',
-  '과자/간식': '🍘',
-  '화장품': '✨',
+  '건강용품': '💆',
+  '건강간식': '🥜',
+  '디저트': '🍪',
+  '전통식품': '🫒',
 };
 
 export default function CategoryFilter({
