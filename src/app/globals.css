@@ -22,13 +22,10 @@
   --color-gold-700: #b45309;
   --color-gold-800: #92400e;
   --color-gold-900: #78350f;
-
-  --color-cream: #fffbf0;
-  --color-cream-dark: #fef3e2;
 }
 
 body {
-  background-color: var(--color-cream);
+  background-color: #f9fafb;
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
 }
 
@@ -38,14 +35,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-cream-dark);
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary-300);
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-400);
+  background: #94a3b8;
+}
+
+/* Selection */
+::selection {
+  background: #fecaca;
+  color: #7f1d1d;
 }

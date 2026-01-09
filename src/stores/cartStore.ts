@@ -1,73 +1,33 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { Gift, CartItem } from '@/types';
+import { Gift } from '@/types';
 
-interface CartState {
-  items: CartItem[];
-  addItem: (gift: Gift, quantity?: number) => void;
-  removeItem: (giftId: string) => void;
-  updateQuantity: (giftId: string, quantity: number) => void;
-  clearCart: () => void;
-  getTotalItems: () => number;
-  getTotalPrice: () => number;
+interface SelectionState {
+  selectedGift: Gift | null;
+  selectGift: (gift: Gift) => void;
+  clearSelection: () => void;
+  hasSelection: () => boolean;
 }
 
-export const useCartStore = create<CartState>()(
+export const useCartStore = create<SelectionState>()(
   persist(
     (set, get) => ({
-      items: [],
+      selectedGift: null,
 
-      addItem: (gift: Gift, quantity: number = 1) => {
-        set((state) => {
-          const existingItem = state.items.find((item) => item.gift.id === gift.id);
-          if (existingItem) {
-            return {
-              items: state.items.map((item) =>
-                item.gift.id === gift.id
-                  ? { ...item, quantity: item.quantity + quantity }
-                  : item
-              ),
-            };
-          }
-          return { items: [...state.items, { gift, quantity }] };
-        });
+      selectGift: (gift: Gift) => {
+        set({ selectedGift: gift });
       },
 
-      removeItem: (giftId: string) => {
-        set((state) => ({
-          items: state.items.filter((item) => item.gift.id !== giftId),
-        }));
+      clearSelection: () => {
+        set({ selectedGift: null });
       },
 
-      updateQuantity: (giftId: string, quantity: number) => {
-        if (quantity <= 0) {
-          get().removeItem(giftId);
-          return;
-        }
-        set((state) => ({
-          items: state.items.map((item) =>
-            item.gift.id === giftId ? { ...item, quantity } : item
-          ),
-        }));
-      },
-
-      clearCart: () => {
-        set({ items: [] });
-      },
-
-      getTotalItems: () => {
-        return get().items.reduce((total, item) => total + item.quantity, 0);
-      },
-
-      getTotalPrice: () => {
-        return get().items.reduce(
-          (total, item) => total + item.gift.price * item.quantity,
-          0
-        );
+      hasSelection: () => {
+        return get().selectedGift !== null;
       },
     }),
     {
-      name: 'cart-storage',
+      name: 'selection-storage',
       storage: createJSONStorage(() => localStorage),
     }
   )

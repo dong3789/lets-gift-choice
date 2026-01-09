@@ -20,7 +20,6 @@ export type Category =
   | '과일'
   | '건강식품'
   | '참기름/들기름'
-  | '주류'
   | '과자/간식'
   | '화장품';
 
@@ -30,7 +29,6 @@ export const CATEGORIES: Category[] = [
   '과일',
   '건강식품',
   '참기름/들기름',
-  '주류',
   '과자/간식',
   '화장품',
 ];
@@ -50,9 +48,6 @@ export interface Order {
 
 export interface RecipientInfo {
   name: string;
-  phone: string;
-  address: string;
-  message: string;
 }
 
 export type TrackingEventType = 'view' | 'addToCart' | 'removeFromCart' | 'purchase' | 'search';

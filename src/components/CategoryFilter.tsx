@@ -15,7 +15,6 @@ const categoryEmojis: Record<Category | 'all', string> = {
   '과일': '🍎',
   '건강식품': '🧧',
   '참기름/들기름': '🫒',
-  '주류': '🍷',
   '과자/간식': '🍘',
   '화장품': '✨',
 };
@@ -26,17 +25,17 @@ export default function CategoryFilter({
 }: CategoryFilterProps) {
   return (
     <motion.div
-      className="flex flex-wrap gap-2 justify-center"
+      className="flex flex-wrap gap-3 justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3, delay: 0.1 }}
     >
       <button
         onClick={() => onSelectCategory('all')}
-        className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all ${
+        className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-all ${
           selectedCategory === 'all'
-            ? 'bg-primary-600 text-white shadow-md'
-            : 'bg-white text-gray-700 hover:bg-primary-50 border border-primary-200'
+            ? 'bg-slate-900 text-white shadow-lg'
+            : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 shadow-sm'
         }`}
       >
         <span>{categoryEmojis.all}</span>
@@ -46,13 +45,13 @@ export default function CategoryFilter({
         <motion.button
           key={category}
           onClick={() => onSelectCategory(category)}
-          className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all ${
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-all ${
             selectedCategory === category
-              ? 'bg-primary-600 text-white shadow-md'
-              : 'bg-white text-gray-700 hover:bg-primary-50 border border-primary-200'
+              ? 'bg-slate-900 text-white shadow-lg'
+              : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 shadow-sm'
           }`}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
         >
           <span>{categoryEmojis[category]}</span>
           <span>{category}</span>
